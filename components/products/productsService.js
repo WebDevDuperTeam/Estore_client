@@ -1,6 +1,6 @@
 const {models} = require('../../models');
 const {Sequelize} = require("sequelize");
-exports.list = (page = 0, itemPerPage = 3) => {
+exports.list = (page = 0, itemPerPage = 9) => {
     return models.quanao.findAll({
         attributes: ['LOAI.TENLOAI', 'MAU', 'GIOITINH', 'THUONGHIEU.TENTHUONGHIEU', 'link', 'GIA'],
         include: [{
