@@ -8,4 +8,5 @@ router.get('/', productsController.list);
 router.get('/:productId', function(req, res, next) {
     res.render('products/productdetail');
 });
+
 module.exports = router;
