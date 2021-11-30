@@ -2,7 +2,7 @@ const {models} = require('../../models');
 const {Sequelize} = require("sequelize");
 exports.list = (page = 0, itemPerPage = 9) => {
     return models.quanao.findAll({
-        attributes: ['LOAI.TENLOAI', 'MAU', 'GIOITINH', 'THUONGHIEU.TENTHUONGHIEU', 'link', 'GIA'],
+        attributes: ['QUANAO_ID', 'LOAI.TENLOAI', 'MAU', 'GIOITINH', 'THUONGHIEU.TENTHUONGHIEU', 'link', 'GIA'],
         include: [{
                 model: models.loai,
                 as: "LOAI",
@@ -19,6 +19,29 @@ exports.list = (page = 0, itemPerPage = 9) => {
         }],
         offset: page * itemPerPage,
         limit: itemPerPage,
+        raw: true
+    });
+};
+
+exports.showDetail = (ID) => {
+    return models.quanao.findAll({
+        attributes: ['LOAI.TENLOAI', 'MAU', 'GIOITINH', 'THUONGHIEU.TENTHUONGHIEU', 'link', 'GIA'],
+        include: [{
+            model: models.loai,
+            as: "LOAI",
+            required: true
+        },
+            {
+                model: models.thuonghieu,
+                as: "THUONGHIEU",
+                required: true
+            }
+        ],
+        where: [{
+            [Sequelize.Op.or]: [
+                { QUANAO_ID: ID }
+            ]
+        }],
         raw: true
     });
 };

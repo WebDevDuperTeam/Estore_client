@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    isArchieve: {
+    DAXOA: {
       type: DataTypes.BOOLEAN,
       allowNull: true
     },
