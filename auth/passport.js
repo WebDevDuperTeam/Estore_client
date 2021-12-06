@@ -27,7 +27,7 @@ function validPassword(user, password) {
 }
 
 passport.serializeUser(function(user, done) {
-    done(null, {userId: user.USER_ID, fullname: (user.TEN + ' ' + user.HO).toString()});
+    done(null, {userId: user.USER_ID, fullname: (user.TEN + ' ' + user.HO).toString(), firstName: user.TEN, lastName: user.HO, bankingNum: user.SO_BANKING, Email: user.EMAIL});
 });
 
 passport.deserializeUser(async function(user, done) {
@@ -43,5 +43,6 @@ passport.deserializeUser(async function(user, done) {
         return done(err);
     }
 });*/
+
 
 module.exports = passport;

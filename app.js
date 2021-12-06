@@ -30,6 +30,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+var accountRouter = require('./components/myAccount/accountRouter');
+
 app.use(function (req, res, next){
   res.locals.user = req.user;
   next();
@@ -38,6 +40,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/', authRouter);
+app.use('/myAccount', accountRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -13,3 +13,8 @@ exports.signIn = (req, res) => {
         res.redirect('/auth');
     }
 }
+
+exports.logout = (req, res) => {
+    req.logout();
+    res.redirect('/');
+}
