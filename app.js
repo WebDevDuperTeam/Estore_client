@@ -3,10 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
+const session = require('express-session');
+const passport = require('./auth/passport');
+const bodyParser = require('body-parser');
+//------------------
 var usersRouter = require('./routes/users');
-var productsRouter = require('./components/products');
+//------------------
+var indexRouter = require('./components/home/homeRouter');
+var productsRouter = require('./components/products/productsRouter');
+var authRouter = require('./components/auth/authRouter');
 
 var app = express();
 
@@ -20,9 +25,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function (req, res, next){
+  res.locals.user = req.user;
+  next();
+});
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/', authRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

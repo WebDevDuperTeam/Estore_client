@@ -54,27 +54,29 @@
                 <div class="navbar-nav mr-auto">
                     <a href="/" class="nav-item nav-link">Home</a>
                     <a href="/products" class="nav-item nav-link">Products</a>
-                    <a href="#" class="nav-item nav-link active">Product Detail</a>
                     <a href="#" class="nav-item nav-link">Cart</a>
                     <a href="#" class="nav-item nav-link">Checkout</a>
-                    <a href="#" class="nav-item nav-link">My Account</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
-                        <div class="dropdown-menu">
-                            <a href="wishlist.html" class="dropdown-item">Wishlist</a>
-                            <a href="login.html" class="dropdown-item">Login & Register</a>
-                            <a href="contact.html" class="dropdown-item">Contact Us</a>
-                        </div>
-                    </div>
+                    {{#if user}}
+                        <a href="#" class="nav-item nav-link">My Account</a>
+                    {{/if}}
                 </div>
                 <div class="navbar-nav ml-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">Login</a>
-                            <a href="#" class="dropdown-item">Register</a>
+                    {{#if user}}
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.fullname}}</a>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">Logout</a>
+                            </div>
                         </div>
-                    </div>
+                    {{else}}
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
+                            <div class="dropdown-menu">
+                                <a href="/auth" class="dropdown-item">Login</a>
+                                <a href="/auth" class="dropdown-item">Register</a>
+                            </div>
+                        </div>
+                    {{/if}}
                 </div>
             </div>
         </nav>
