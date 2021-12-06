@@ -1,7 +1,7 @@
 const passport = require('../../auth/passport');
 
 exports.showAuthLayout = (req, res) => {
-    res.render('auth/authLayout');
+    res.render('auth/authLayout', {wrongPassword: req.query.wrongPassword !== undefined});
 }
 
 exports.signIn = (req, res) => {

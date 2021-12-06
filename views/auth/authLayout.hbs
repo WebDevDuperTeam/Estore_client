@@ -179,6 +179,11 @@
                                 <label>Password</label>
                                 <input class="form-control" type="text" placeholder="Password" name="password">
                             </div>
+                            {{#if wrongPassword}}
+                                <div class="col-md-10">
+                                    <div style="color: red">wrong password or username please enter again</div>
+                                </div>
+                            {{/if}}
                             <div class="col-md-12">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="newaccount">
