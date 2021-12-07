@@ -27,7 +27,7 @@ exports.logout = (req, res) => {
 exports.Register = async (req, res) => {
     const {firstName, lastName, email, bankingNum, password} = req.body;
     try {
-        if(!email || !password) {
+        if(!firstName || !lastName || !email || !bankingNum || !password) {
             res.render('auth/register', {errorCode: 1});
         } else {
             console.log('chay vo await service')
