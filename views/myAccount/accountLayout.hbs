@@ -221,27 +221,37 @@
                     <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
                         {{#if user}}
                             <h4>Account Details</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input class="form-control" type="text" value={{user.firstName}}>
+                            <form method="post">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input class="form-control" type="text" value="{{user.firstName}}" name="firstName">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" type="text" value="{{user.lastName}}" name="lastname">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" type="text" value="{{user.bankingNum}}" name="bankingNum">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" type="button" value="{{user.Email}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" type="text" placeholder="Confirm pass to change info" name="password">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input class="form-control" type="hidden" value="{{user.userId}}" name="userid">
+                                    </div>
+                                    {{#if confirmWrong}}
+                                        <div class="col-md-10">
+                                            <div style="color: red">Enter wrong confirm password please enter again</div>
+                                        </div>
+                                    {{/if}}
+                                    <div class="col-md-12">
+                                        <button class="btn">Update Account</button>
+                                        <br><br>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input class="form-control" type="text" value={{user.lastName}}>
-                                </div>
-                                <div class="col-md-6">
-                                    <input class="form-control" type="text" value={{user.bankingNum}}>
-                                </div>
-                                <div class="col-md-6">
-                                    <input class="form-control" type="text" value={{user.Email}}>
-                                </div>
-                                <div class="col-md-12">
-                                    <input class="form-control" type="text" value={{user.userId}}>
-                                </div>
-                                <div class="col-md-12">
-                                    <button class="btn">Update Account</button>
-                                    <br><br>
-                                </div>
-                            </div>
+                            </form>
                         {{/if}}
                     </div>
                 </div>
