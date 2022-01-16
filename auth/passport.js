@@ -7,7 +7,7 @@ const users = models.users;
 passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'},
     async function(username, password, done) {
         try {
-            const user = await users.findOne({raw:true, where: {EMAIL: username, LaAdmin: 'USER'}});
+            const user = await users.findOne({raw:true, where: {EMAIL: username, LA_ADMIN: false}});
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });
             }

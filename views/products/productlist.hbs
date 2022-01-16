@@ -59,6 +59,7 @@
                     <a href="#" class="nav-item nav-link">Checkout</a>
                     {{#if user}}
                         <a href="/myAccount" class="nav-item nav-link">My Account</a>
+                        <a href="/changePassword" class="nav-item nav-link">Change Password</a>
                     {{/if}}
                 </div>
                 <div class="navbar-nav ml-auto">
@@ -98,10 +99,8 @@
             </div>
             <div class="col-md-6">
                 <div class="search">
-                    <form method="GET">
-                    <input type="text" placeholder="Search" name="key">
-                    <button><i class="fa fa-search" type="submit" value="submit"></i></button>
-                    </form>
+                    <input type="text" placeholder="Search">
+                    <button><i class="fa fa-search"></i></button>
                 </div>
             </div>
             <div class="col-md-3">
@@ -140,53 +139,60 @@
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-md-12">
+                        <form method="post">
                         <div class="product-view-top">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="product-search">
-                                        <input type="email" value="Search">
-                                        <button><i class="fa fa-search"></i></button>
+                                        <input type="text" placeholder="Search" name="nameSearch">
+                                        <button type="submit"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="product-short">
-                                        <div class="dropdown">
-                                            <div class="dropdown-toggle" data-toggle="dropdown">Product short by</div>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="#" class="dropdown-item">Newest</a>
-                                                <a href="#" class="dropdown-item">Popular</a>
-                                                <a href="#" class="dropdown-item">Most sale</a>
-                                            </div>
-                                        </div>
+                                        <label for="cars">Choose a type</label>
+                                        <select id="cars" name="type">
+                                            <option value="Tất cả">Tất cả</option>
+                                            <option value="Sơ mi">Sơ mi</option>
+                                            <option value="Áo thun">Áo thun</option>
+                                            <option value="Đầm">Đầm</option>
+                                            <option value="Váy">Váy</option>
+                                            <option value="Hoodies">Hoodies</option>
+                                            <option value="Áo khoác">Áo khoác</option>
+                                            <option value="Vest">Vest</option>
+                                            <option value="Quần short">Quần short</option>
+                                            <option value="Áo polo">Áo polo</option>
+                                        </select>
+                                        <button type="submit"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="product-price-range">
-                                        <div class="dropdown">
-                                            <div class="dropdown-toggle" data-toggle="dropdown">Product price range</div>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="#" class="dropdown-item">$0 to $50</a>
-                                                <a href="#" class="dropdown-item">$51 to $100</a>
-                                                <a href="#" class="dropdown-item">$101 to $150</a>
-                                                <a href="#" class="dropdown-item">$151 to $200</a>
-                                                <a href="#" class="dropdown-item">$201 to $250</a>
-                                                <a href="#" class="dropdown-item">$251 to $300</a>
-                                                <a href="#" class="dropdown-item">$301 to $350</a>
-                                                <a href="#" class="dropdown-item">$351 to $400</a>
-                                                <a href="#" class="dropdown-item">$401 to $450</a>
-                                                <a href="#" class="dropdown-item">$451 to $500</a>
-                                            </div>
-                                        </div>
+                                        <label for="cars">Choose a brand:</label>
+                                        <select id="cars" name="brand">
+                                            <option value="Tất cả">Tất cả</option>
+                                            <option value="Louis vouton">Louis vouton</option>
+                                            <option value="saab">Chanel</option>
+                                            <option value="fiat">Hermes</option>
+                                            <option value="audi">Gucci</option>
+                                            <option value="audi">Versace</option>
+                                            <option value="audi">Prada</option>
+                                            <option value="audi">Dior</option>
+                                            <option value="audi">Burberry</option>
+                                            <option value="audi">Fendi</option>
+                                        </select>
+                                        <button type="submit"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                     {{#each products}}
                     <div class="col-md-4">
                         <div class="product-item">
                             <div class="product-title">
-                                <a href="/products/:1?ID={{QUANAO_ID}}">{{TENLOAI}} {{MAU}} {{GIOITINH}} <br> {{TENTHUONGHIEU}}</a>
+                                <a href="/products/:1?ID={{QUANAO_ID}}">{{TEN_LOAI}} {{MAU}} {{GIOI_TINH}} <br> {{TEN_THUONG_HIEU}}</a>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -197,7 +203,7 @@
                             </div>
                             <div class="product-image">
                                 <a href="/products/:1?ID={{QUANAO_ID}}">
-                                    <img src={{link}} alt="Product Image">
+                                    <img src={{LINK}} alt="Product Image">
                                 </a>
                                 <div class="product-action">
                                     <a href="#"><i class="fa fa-cart-plus"></i></a>
