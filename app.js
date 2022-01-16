@@ -32,6 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var accountRouter = require('./components/myAccount/accountRouter');
+var changePasswordRouter = require('./components/changePasword/changePasswordRouter')
 
 app.use(function (req, res, next){
   res.locals.user = req.user;
@@ -42,6 +43,7 @@ app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/', authRouter);
 app.use('/myAccount', accountRouter);
+app.use('/changePassword', changePasswordRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
