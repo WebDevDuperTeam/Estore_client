@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('kichthuoc', {
     QUANAO_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: false,
       primaryKey: true,
       references: {
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         key: 'QUANAO_ID'
       }
     },
-    KICHTHUOC: {
+    KICH_THUOC: {
       type: DataTypes.CHAR(10),
       allowNull: false,
       primaryKey: true
@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "QUANAO_ID" },
-          { name: "KICHTHUOC" },
+          { name: "KICH_THUOC" },
         ]
       },
     ]

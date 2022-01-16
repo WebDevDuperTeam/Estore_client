@@ -1,20 +1,22 @@
 const Sequelize = require('sequelize');
+const {UUIDV4} = require("sequelize");
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('binhluan', {
     BINHLUAN_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      defaultValue: UUIDV4
     },
     QUANAO_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: true,
       references: {
         model: 'quanao',
         key: 'QUANAO_ID'
       }
     },
-    USER_NAME: {
+    USERNAME: {
       type: DataTypes.STRING(50),
       allowNull: true
     },
@@ -22,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    NOIDUNG: {
+    NOI_DUNG: {
       type: DataTypes.STRING(200),
       allowNull: true
     }

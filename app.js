@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var indexRouter = require('./components/home/homeRouter');
 var productsRouter = require('./components/products/productsRouter');
 var authRouter = require('./components/auth/authRouter');
+var cartRouter = require('./components/cart/cartRouter');
 
 var app = express();
 
@@ -32,30 +33,31 @@ app.use(passport.session());
 
 var accountRouter = require('./components/myAccount/accountRouter');
 
-app.use(function (req, res, next){
-  res.locals.user = req.user;
-  next();
+app.use(function(req, res, next) {
+    res.locals.user = req.user;
+    next();
 });
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/', authRouter);
 app.use('/myAccount', accountRouter);
+app.use('/cart', cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;
