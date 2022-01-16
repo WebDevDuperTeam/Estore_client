@@ -2,23 +2,23 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('hoadon', {
     HOADON_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: false,
       primaryKey: true
     },
     GIOHANG_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: true,
       references: {
         model: 'giohang',
         key: 'GIOHANG_ID'
       }
     },
-    NGAYMUA: {
+    NGAY_MUA: {
       type: DataTypes.DATEONLY,
       allowNull: true
     },
-    TONGTIEN: {
+    TONG_TIEN: {
       type: DataTypes.DOUBLE,
       allowNull: true
     },
@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.CHAR(10),
       allowNull: true
     },
-    DIACHI: {
+    DIA_CHI: {
       type: DataTypes.STRING(50),
       allowNull: true
     }

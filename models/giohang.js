@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('giohang', {
     GIOHANG_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: false,
       primaryKey: true
     },
@@ -11,14 +11,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     USER_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: true,
       references: {
         model: 'users',
         key: 'USER_ID'
       }
     },
-    TRANGTHAI: {
+    TRANG_THAI: {
       type: DataTypes.INTEGER,
       allowNull: true
     }

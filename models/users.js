@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('users', {
     USER_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: false,
       primaryKey: true
     },
@@ -15,20 +15,42 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     EMAIL: {
-      type: DataTypes.CHAR(20),
+      type: DataTypes.CHAR(255),
       allowNull: true
     },
     SO_BANKING: {
       type: DataTypes.CHAR(20),
-      allowNull: true
+      allowNull: true,
+      defaultValue: "0"
     },
     PASS: {
       type: DataTypes.CHAR(255),
       allowNull: true
     },
-    LaAdmin: {
-      type: DataTypes.CHAR(10),
-      allowNull: true
+    LA_ADMIN: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: 0
+    },
+    KICH_HOAT: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: 0
+    },
+    KHOA: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: 0
+    },
+    TOKEN: {
+      type: DataTypes.CHAR(255),
+      allowNull: true,
+      defaultValue: "0"
+    },
+    NGAY_HET_HAN_TOKEN: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
     sequelize,

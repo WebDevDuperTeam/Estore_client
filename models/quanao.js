@@ -2,12 +2,12 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('quanao', {
     QUANAO_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: false,
       primaryKey: true
     },
     LOAI_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: true,
       references: {
         model: 'loai',
@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     THUONGHIEU_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: true,
       references: {
         model: 'thuonghieu',
@@ -30,19 +30,20 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DOUBLE,
       allowNull: true
     },
-    SOLUONG: {
+    SO_LUONG: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    GIOITINH: {
+    GIOI_TINH: {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    DAXOA: {
+    DA_XOA: {
       type: DataTypes.BOOLEAN,
-      allowNull: true
+      allowNull: true,
+      defaultValue: 0
     },
-    link: {
+    LINK: {
       type: DataTypes.STRING(2083),
       allowNull: true
     }

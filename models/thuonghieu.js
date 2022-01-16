@@ -2,11 +2,11 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('thuonghieu', {
     THUONGHIEU_ID: {
-      type: DataTypes.CHAR(10),
+      type: DataTypes.CHAR(36),
       allowNull: false,
       primaryKey: true
     },
-    TENTHUONGHIEU: {
+    TEN_THUONG_HIEU: {
       type: DataTypes.STRING(100),
       allowNull: true
     }

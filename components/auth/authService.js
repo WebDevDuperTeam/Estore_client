@@ -6,7 +6,7 @@ const Users = models.users;
 exports.Register = async (firstName, lastName, email, bankingNum, password) => {
     //check if email is registed
     console.log('enter service')
-    const Account = await models.users.findOne({where: {EMAIL: email, LaAdmin: 'USER'}});
+    const Account = await models.users.findOne({where: {EMAIL: email, LA_ADMIN: 'USER'}});
     if(Account) {
         console.log('catch error');
         throw new Error('Email is already registed');
@@ -25,5 +25,5 @@ exports.Register = async (firstName, lastName, email, bankingNum, password) => {
         NewID = NewID + "00" + countRows.toString();
     }
     //create new account
-    return Users.create({USER_ID: NewID, TEN: firstName, HO: lastName, EMAIL: email, SO_BANKING: bankingNum, PASS: hashPass, LaAdmin: 'USER'});
+    return Users.create({USER_ID: NewID, TEN: firstName, HO: lastName, EMAIL: email, SO_BANKING: bankingNum, PASS: hashPass, LA_ADMIN: false});
 };
