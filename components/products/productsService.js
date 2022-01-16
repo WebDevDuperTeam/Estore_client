@@ -25,7 +25,7 @@ exports.list = (page = 0, itemPerPage = 9) => {
 
 exports.showDetail = (ID) => {
     return models.quanao.findAll({
-        attributes: ['LOAI.TEN_LOAI', 'MAU', 'GIOI_TINH', 'THUONGHIEU.TEN_THUONG_HIEU', 'LINK', 'GIA'],
+        attributes: ['QUANAO_ID', 'LOAI.TEN_LOAI', 'MAU', 'GIOI_TINH', 'THUONGHIEU.TEN_THUONG_HIEU', 'LINK', 'GIA'],
         include: [{
             model: models.loai,
             as: "LOAI",
@@ -59,6 +59,9 @@ exports.Commentlist = (ID, page = 0, itemPerPage = 2) => {
                 { QUANAO_ID: ID }
             ]
         }],
+
+        offset: page * itemPerPage,
+        limit: itemPerPage,
         raw: true
     });
 };
