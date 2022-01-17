@@ -234,11 +234,13 @@
                                         </div>
                                         <div class="product-price" style="display: flex;flex-direction: row;justify-content: space-around;">
                                             <h3>{{GIA}}</h3>
-                                            <button type="submit" value="submit" style="float: right;font-size: 20px;border: 0;padding: 0;color: #ff6f61;">Buy Now
-                                                {{#if users}}
+                                           <form method="post" action="">
+                                                <button type="submit" value="submit" style="float: right;font-size: 20px;border: 0;padding: 0;color: #ff6f61;">Buy Now
+
+                                                    <input class="btn" href="#" type="hidden" name="quanao_id" value="{{QUANAO_ID}}"><i class="fa fa-shopping-cart" ></i></input>
                                                     <input type="hidden" name="user_id" value="{{users}}">
-                                                {{/if}}
-                                            </button>
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

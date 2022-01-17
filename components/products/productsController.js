@@ -41,7 +41,7 @@ exports.list = async(req, res) => {
         }
         const mau = req.query.mau;
         const sapxep=req.query.sapxep;
-
+      
         const products = await productsService.list(page, searchName, gt, prices[0] * 22000, prices[1] * 22000, mau);
         if(sapxep!='0'&&sapxep!=undefined)
         {
@@ -76,12 +76,52 @@ exports.list = async(req, res) => {
                 }
             }
         }
-        res.render('products/productlist', { products: products });
+        if(req.user!==undefined&&req.user!=='')
+        {
+            const users = await productsService.listUser(req.user.userId);
+          
+            products.forEach(element => {
+                element.users = users[0].USER_ID
+            });
+            res.render('products/productlist', { products: products, user: users });
+
+
+        }
+        else
+        {
+          res.render('products/productlist', { products: products });
+        }
 
     } catch (err) {
         console.log(err);
     }
 }
+
+
+exports.addCart = async(req, res) => {
+
+    if (req.body.user_id !== ''&&req.body.user_id!==undefined) {
+
+        const user_id = req.body.user_id;
+        const quanao_id = req.body.quanao_id;
+        const Cart = await productsService.addCart(user_id);
+        const Cart_ID = Cart.GIOHANG_ID;
+        const CartDetail = await productsService.findCartDetail(Cart_ID, quanao_id);
+        if (CartDetail != null) {
+            await productsService.Update(CartDetail.GIOHANG_ID, CartDetail.QUANAO_ID, CartDetail.SO_LUONG + 1)
+        } else {
+            const so_luong=1;
+             await productsService.createCart(Cart_ID, quanao_id,so_luong);
+        }
+        res.redirect('back');
+    }
+    else
+    {
+    res.redirect('/auth');
+    }
+}
+
+
 
 exports.showDetail = async (req, res) => {
     const productDetail = await productsService.showDetail(req.query.ID)
