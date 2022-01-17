@@ -13,9 +13,7 @@ var usersRouter = require('./routes/users');
 var indexRouter = require('./components/home/homeRouter');
 var productsRouter = require('./components/products/productsRouter');
 var authRouter = require('./components/auth/authRouter');
-var cartRouter =require('./components/cart/cartRouter');
-
-
+var cartRouter = require('./components/cart/cartRouter');
 var app = express();
 
 // view engine setup
@@ -46,8 +44,7 @@ app.use('/products', productsRouter);
 app.use('/', authRouter);
 app.use('/myAccount', accountRouter);
 app.use('/changePassword', changePasswordRouter);
-app.use('/cart',cartRouter);
-
+app.use('/cart', cartRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

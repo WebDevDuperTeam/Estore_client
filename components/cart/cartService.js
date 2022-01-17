@@ -2,40 +2,6 @@ const { raw } = require('body-parser');
 const { models } = require('../../models');
 
 exports.list = (id) => {
-    // return models.giohang.findAll({
-    //     include: [{
-    //         models: models.ct_giohang,
-    //         as: 'ctgiohang',
-    //         where: {
-    //             GIOHANG_ID: GIOHANG_ID
-    //         }
-    //     }],
-    //     where: [{
-    //         USER_ID: id
-    //     }],
-    //     raw: true
-    // });
-
-    // return models.giohang.findOne({
-    //     include: [{
-    //         model: models.ct_giohang,
-    //         as: 'ct_giohangs',
-
-    //     }, {
-    //         model: models.quanao,
-    //         as: 'QUANAO_ID_quanaos',
-    //         include: [{
-    //             model: models.loai,
-    //             as: "LOAI"
-    //         }, ],
-    //     }, ],
-    //     where: {
-    //         USER_ID: id
-    //     },
-    //     raw: true
-
-    // });
-
       return models.giohang.findOne({
         
         where: {

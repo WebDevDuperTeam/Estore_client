@@ -1,7 +1,7 @@
 const cartService = require('./cartService')
 
 exports.list = async(req, res) => {
-    if (req.user != undefined) {
+    if (req.user !== undefined) {
         const Cart = await cartService.list(req.user.userId);
         const CartDetail = await cartService.listDetail(Cart.GIOHANG_ID);
         let CartDetailWithLoai=[];
@@ -31,12 +31,8 @@ exports.remove = async(req,res)=>{
 
     res.redirect('back')
 }
-// remove all
 exports.removeAll = async(req,res)=>{
     let giohang_id=req.body.giohang_id1;
     let response = await cartService.removeAll(giohang_id);
     res.redirect('/');
-}
-exports.removeproduct= async(req,res)=>{
-    res.redirect('/auth');
 }
