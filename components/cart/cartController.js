@@ -31,8 +31,12 @@ exports.remove = async(req,res)=>{
 
     res.redirect('back')
 }
+// remove all
 exports.removeAll = async(req,res)=>{
     let giohang_id=req.body.giohang_id1;
     let response = await cartService.removeAll(giohang_id);
     res.redirect('/');
+}
+exports.removeproduct= async(req,res)=>{
+    res.redirect('/auth');
 }
